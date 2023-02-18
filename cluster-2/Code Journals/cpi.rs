@@ -9,12 +9,13 @@ pub mod lever {
     use super::*;
     pub fn initialize(_ctx: Context<InitializeLever>) -> Result<()> {
         Ok(())
-    }
+    } 
 
+    //function to change is_on's value
     pub fn switch_power(ctx: Context<SetPowerStatus>, name: String) -> Result<()> {
         
         let power = &mut ctx.accounts.power;
-        power.is_on = !power.is_on;
+        power.is_on = !power.is_on; 
 
         msg!("{} is pulling the power switch!", &name);
 
@@ -30,8 +31,8 @@ pub mod lever {
 
 #[derive(Accounts)]
 pub struct InitializeLever<'info> {
-    #[account(init, payer = user, space = 8 + 8)]
-    pub power: Account<'info, PowerStatus>,
+    #[account(init, payer = user, space = 8 + 8)] //This account is created and initialized with the #[account(init)] attribute,
+    pub power: Account<'info, PowerStatus>, //which specifies that the account should be created if it does not exist and initialized with the PowerStatus struct
     #[account(mut)]
     pub user: Signer<'info>,
     pub system_program: Program<'info, System>,
