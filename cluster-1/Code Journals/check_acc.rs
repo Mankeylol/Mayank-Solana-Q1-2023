@@ -9,7 +9,7 @@ use solana_program::{
     system_program,
 };
 
-//entrypoint of the program
+//sets process instruction as the entrypoint of the program
 entrypoint!(process_instruction);
 
 
@@ -19,7 +19,7 @@ fn process_instruction(
     _instruction_data: &[u8],
 ) -> ProgramResult {
 
-//checks if the program ID in instruction is the same as your program
+//checks if the program ID in instruction is the same as the system program
     if system_program::check_id(program_id) {
         return Err(ProgramError::IncorrectProgramId) // throws an error if it's not the same
     };
@@ -31,7 +31,7 @@ fn process_instruction(
         return Err(ProgramError::NotEnoughAccountKeys) //error thrown if there's not enough accs
     };
 
-    //????
+    //iterates over the given accouncs and sets all the variables 
     let accounts_iter = &mut accounts.iter();
     let _payer = next_account_info(accounts_iter)?;
     let account_to_create = next_account_info(accounts_iter)?;
@@ -45,7 +45,7 @@ fn process_instruction(
         return Err(ProgramError::AccountAlreadyInitialized)
     };
    
-   //??
+   //the account making the tx has no gas fees
     msg!("Account to change: {}", account_to_change.key);
     if account_to_change.lamports() == 0 {
         msg!("The program expected the account to change to be initialized.");
