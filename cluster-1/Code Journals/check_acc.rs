@@ -9,7 +9,11 @@ use solana_program::{
     system_program,
 };
 
+<<<<<<< HEAD
+//sets process_instruction to be the entrypoint of the program
+=======
 //sets process instruction as the entrypoint of the program
+>>>>>>> 835ae0cff22525cbb4d8b41e45451bf8a04d5899
 entrypoint!(process_instruction);
 
 
@@ -31,7 +35,10 @@ fn process_instruction(
         return Err(ProgramError::NotEnoughAccountKeys) //error thrown if there's not enough accs
     };
 
+<<<<<<< HEAD
+=======
     //iterates over the given accouncs and sets all the variables 
+>>>>>>> 835ae0cff22525cbb4d8b41e45451bf8a04d5899
     let accounts_iter = &mut accounts.iter();
     let _payer = next_account_info(accounts_iter)?;
     let account_to_create = next_account_info(accounts_iter)?;
@@ -64,3 +71,7 @@ fn process_instruction(
 
     Ok(())
 }
+
+
+//the key concepts used are borrowing and macros
+// the contract checks the instruction passed

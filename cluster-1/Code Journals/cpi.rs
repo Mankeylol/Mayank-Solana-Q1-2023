@@ -12,7 +12,11 @@ use solana_program::{
     program::invoke,
 };
 
+<<<<<<< HEAD
+// sets pull_lever as the entrypoint of the program
+=======
 // sets pull_lever entrypoint of the program
+>>>>>>> 835ae0cff22525cbb4d8b41e45451bf8a04d5899
 entrypoint!(pull_lever);
 
 
